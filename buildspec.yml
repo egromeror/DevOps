@@ -9,13 +9,13 @@ phases:
       - pytest --cov-fail-under=70 --cov=src
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t pipeline_container .
-      - docker tag pipeline_container:latest 528757811031.dkr.ecr.us-east-1.amazonaws.com/pipeline_container:latest
+      - docker build -t uniandes_projects .
+      - docker tag uniandes_projects:latest 528757811031.dkr.ecr.us-east-1.amazonaws.com/uniandes_projects:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 528757811031.dkr.ecr.us-east-1.amazonaws.com/pipeline_container:latest
+      - docker push 528757811031.dkr.ecr.us-east-1.amazonaws.com/uniandes_projects:latest
 artifacts:
   files:
     - '**/*'
