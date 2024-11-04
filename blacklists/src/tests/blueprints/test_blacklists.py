@@ -36,17 +36,17 @@ class TestBlacklists(unittest.TestCase):
         #self.assertEqual(response.status_code, 201)
         #self.assertEqual(response.json, mock_blacklist_response)
 
-  #  @patch('src.commands.authenticate.Authenticate') 
-   # def test_create_blacklist_missing_token(self, MockAuthenticate):
-    #    MockAuthenticate.return_value.verify.side_effect = MissingToken()
+    @patch('src.commands.authenticate.Authenticate') 
+    def test_create_blacklist_missing_token(self, MockAuthenticate):
+        MockAuthenticate.return_value.verify.side_effect = MissingToken()
 
-     #   response = self.client.post('/blacklists', json={
-      #      'email': 'test@example.com',
-       #     'app_uuid': '72c0a3c3-0d1b-42d9-ba3c-a42eb0d1c09c',
-        #    'blocked_reason': 'Spam'
-        #})
+        response = self.client.post('/blacklists', json={
+            'email': 'test@example.com',
+            'app_uuid': '72c0a3c3-0d1b-42d9-ba3c-a42eb0d1c09c',
+            'blocked_reason': 'Spam'
+        })
 
-      #  self.assertEqual(response.status_code, 403)  
+        self.assertEqual(response.status_code, 403)  
 
     @patch('src.commands.getList.getBlacklist')  
     @patch('src.commands.authenticate.Authenticate')  
