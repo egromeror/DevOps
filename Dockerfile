@@ -8,8 +8,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 5000
 
 ENV FLASK_APP="blacklists/src/main.py"
 
-CMD ["flask", "run", "-h", "0.0.0.0", "--port=3000"]
+CMD ["flask", "run", "-h", "0.0.0.0", "--port=5000"]
