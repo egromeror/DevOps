@@ -8,6 +8,7 @@ phases:
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 528757811031.dkr.ecr.us-east-1.amazonaws.com
   build:
     commands:
+      - echo Ejecucion de pruebas unitarias
       - pytest --cov-fail-under=70 --cov=src
       - echo Build started on `date`
       - echo Building the Docker image...          
@@ -18,6 +19,20 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 528757811031.dkr.ecr.us-east-1.amazonaws.com/uniandes_projects:latest
+      - echo Writing Image Definitions file...
+      - printf '[{"name":"blacklist-app-container-2","imageUri":"528757811031.dkr.ecr.us-east-1.amazonaws.com/uniandes_projects:latest"}]' > imagedefinitions.json
+      - printf '{"ImageURI":"528757811031.dkr.ecr.us-east-1.amazonaws.com/uniandes_projects:latest"}' > imageDetail.json
+      - cat imagedefinitions.json 
 artifacts:
   files:
     - '**/*'
+    - imagedefinitions.json
+    - imageDetail.json
+  secondary-artifacts:
+    DefinitionArtifact:
+      files:
+        - appspec.yaml
+        - taskdef.json
+    ImageArtifact:
+      files:
+        - imageDetail.json
