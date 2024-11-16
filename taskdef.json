@@ -22,5 +22,5 @@
     "networkMode": "awsvpc",
     "cpu": "512",
     "memory": "1024",
-    "family": "blacklist-app-task-2:2"
+    "family": "blacklist-app-task-2"
   }
