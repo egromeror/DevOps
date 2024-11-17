@@ -1,26 +1,24 @@
 {
-    "executionRoleArn": "arn:aws:iam::528757811031:role/ecsTaskExecutionRole",
-    "containerDefinitions": [
-      {
-        "portMappings": [
-          {
-            "hostPort": 5000,
-            "protocol": "tcp",
-            "containerPort": 5000
-          }
-        ],
-
-        "image": "<IMAGE1_NAME>",
-        "essential": true,
-        "name": "blacklist-app-container-2"
-      }
-    ],
-
-    "requiresCompatibilities": [
-      "FARGATE"
-    ],
-    "networkMode": "awsvpc",
-    "cpu": "1024",
-    "memory": "3072",
-    "family": "blacklist-app-task-2"
-  }
+  "executionRoleArn": "arn:aws:iam::528757811031:role/ecsTaskExecutionRole", 
+  "networkMode": "awsvpc", 
+  "family": "blacklist-app-task-2", 
+  "memory": "3072", 
+  "cpu": "1024", 
+  "containerDefinitions": [
+    {
+      "portMappings": [
+        {
+          "protocol": "tcp", 
+          "containerPort": 5000, 
+          "hostPort": 5000
+        }
+      ], 
+      "image": "<IMAGE1_NAME>", 
+      "essential": true, 
+      "name": "blacklist-app-container-2"
+    }
+  ], 
+  "requiresCompatibilities": [
+    "FARGATE"
+  ]
+}
