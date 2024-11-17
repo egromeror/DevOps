@@ -28,12 +28,10 @@ artifacts:
     - '**/*'
     - imagedefinitions.json
     - imageDetail.json
-    - appspec.json
-    - taskdef.json
   secondary-artifacts:
     DefinitionArtifact:
       files:
-        - appspec.json
+        - appspec.yaml
         - taskdef.json
     ImageArtifact:
       files:
